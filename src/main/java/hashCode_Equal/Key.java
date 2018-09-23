@@ -39,7 +39,7 @@ public class Key {
         hashMap.put(new Key("JohnNguyen1"), 30);
         hashMap.put(new Key("Nick"), 20);
         hashMap.put(new Key("Nick"), 30);
-        System.out.println("All value will be null if we new object and not override equal and hashcode:");
+        System.out.println("All value will be not null if we new object and not override equal and hashcode:");
         System.out.println("value is " + hashMap.get(new Key("JohnNguyen")));
         System.out.println("value is " + hashMap.get(new Key("JohnNguyen1")));
         System.out.println("value is " + hashMap.get(new Key("Nick")));
