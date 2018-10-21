@@ -1,4 +1,4 @@
-package DesignPattern.structural;
+package DesignPattern.structural.adapter;
 
 public interface AdvantageMediaPlayer {
     String MP4 = "MP4";

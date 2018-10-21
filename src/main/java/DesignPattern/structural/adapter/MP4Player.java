@@ -1,4 +1,4 @@
-package DesignPattern.structural;
+package DesignPattern.structural.adapter;
 
 public class MP4Player implements AdvantageMediaPlayer {
     @Override

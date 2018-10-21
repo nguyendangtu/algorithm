@@ -1,4 +1,4 @@
-package DesignPattern.structural;
+package DesignPattern.structural.adapter;
 
 public class VCLPlayer implements AdvantageMediaPlayer {
     @Override

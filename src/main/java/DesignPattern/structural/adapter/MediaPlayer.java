@@ -1,4 +1,4 @@
-package DesignPattern.structural;
+package DesignPattern.structural.adapter;
 
 public interface MediaPlayer {
     String MP3 = "MP3";

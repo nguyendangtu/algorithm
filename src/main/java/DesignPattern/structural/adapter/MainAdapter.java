@@ -1,4 +1,4 @@
-package DesignPattern.structural;
+package DesignPattern.structural.adapter;
 
 public class MainAdapter {
     public static void main(String args[]) {
