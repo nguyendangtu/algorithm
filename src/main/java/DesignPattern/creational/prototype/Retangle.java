@@ -2,11 +2,11 @@ package DesignPattern.creational.prototype;
 
 public class Retangle extends Shape {
     public Retangle() {
-        type = "Retangle";
+        type = "Rectangle";
     }
 
     @Override
     void draw() {
-        System.out.println("This is the Retangle::draw() method");
+        System.out.println("This is the Rectangle::draw() method");
     }
 }
