@@ -1,4 +1,4 @@
-package collectionFramework.Codility;
+package algorithm.Codility;
 
 public class CutTree {
     public static void main(String args[]) {

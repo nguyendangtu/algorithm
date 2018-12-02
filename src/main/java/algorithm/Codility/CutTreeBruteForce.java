@@ -1,4 +1,4 @@
-package collectionFramework.Codility;
+package algorithm.Codility;
 
 public class CutTreeBruteForce {
     public static void main(String args[]) {
