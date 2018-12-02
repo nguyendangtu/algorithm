@@ -4,8 +4,9 @@ import java.util.*;
 
 public class SetExample {
     public static void main(String args[]) {
-        //setInterface();
+        setInterface();
         enumerationVsIterator();
+        letDoLinkedHashMap();
     }
 
 
@@ -98,5 +99,13 @@ public class SetExample {
         }
 
 
+    }
+
+    public static void letDoLinkedHashMap() {
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("Three", "Three");
+        linkedHashMap.put("Two", "Two");
+        linkedHashMap.put("One", "One");
+        linkedHashMap.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
     }
 }

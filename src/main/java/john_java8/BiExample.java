@@ -1,15 +1,17 @@
-package java8;
+package john_java8;
 
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
+import java.util.function.ToLongBiFunction;
 
 public class BiExample {
     public static void main(String args[]) {
         letDoBiConsumer();
         letDoBiFunction();
         letDoBiPredicate();
+        letDoToLongBiFunction();
     }
 
     public static void letDoBiConsumer() {
@@ -29,10 +31,16 @@ public class BiExample {
     }
 
     public static void letDoBiPredicate() {
-        BiPredicate<Integer,String> biPredicate = (i,s)-> i > 8 && s.startsWith("J");
+        BiPredicate<Integer, String> biPredicate = (i, s) -> i > 8 && s.startsWith("J");
         System.out.println("BI PREDICATE EXAMPLE");
-        System.out.println(biPredicate.test(6,"Join"));
-        System.out.println(biPredicate.test(9,"John"));
-        System.out.println(biPredicate.test(9,"Nick"));
+        System.out.println(biPredicate.test(6, "Join"));
+        System.out.println(biPredicate.test(9, "John"));
+        System.out.println(biPredicate.test(9, "Nick"));
+    }
+
+    public static void letDoToLongBiFunction() {
+        ToLongBiFunction<String, String> i = (x, y) -> Long.parseLong(x) + Long.parseLong(y);
+        System.out.println("To Long BI FUNCTION");
+        System.out.println(i.applyAsLong("2", "3"));
     }
 }

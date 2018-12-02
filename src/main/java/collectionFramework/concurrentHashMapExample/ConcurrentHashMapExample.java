@@ -7,6 +7,12 @@ import java.util.function.BiConsumer;
 
 public class ConcurrentHashMapExample {
     public static void main(String args[]) {
+        int n = 10000;
+        System.out.println("1<<30=" + (1 << 30) + ", and 8>>> 1=" + (n >>> 10));
+        hashMapVsConcurrentHashmap();
+    }
+
+    public static void hashMapVsConcurrentHashmap() {
         ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
         concurrentHashMap.put("1", "1");
         concurrentHashMap.put("2", "1");
