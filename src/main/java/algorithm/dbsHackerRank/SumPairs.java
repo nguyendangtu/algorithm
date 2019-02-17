@@ -6,11 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SumPairs {
-    public static void main(String args[]) {
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12));
-        long k = 13;
-        System.out.println("The number of pair is: " + sumPairs(numbers, k));
-    }
 
     public static int sumPairs(List<Integer> numbers, long k) {
         HashMap<Long, Boolean> hashMap = new HashMap();
@@ -27,4 +22,11 @@ public class SumPairs {
         }
         return count;
     }
+
+    public static void main(String args[]) {
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12));
+        long k = 13;
+        System.out.println("The number of pair is: " + sumPairs(numbers, k));
+    }
+
 }
