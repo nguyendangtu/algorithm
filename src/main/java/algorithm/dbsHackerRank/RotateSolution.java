@@ -1,3 +1,5 @@
+package algorithm.dbsHackerRank;
+
 public class RotateSolution {
     public static void main(String args[]) {
         int[] arrays = new int[]{1, 2, 3};
