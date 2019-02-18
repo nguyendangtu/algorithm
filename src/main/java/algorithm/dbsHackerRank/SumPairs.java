@@ -1,31 +1,45 @@
 package algorithm.dbsHackerRank;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class SumPairs {
 
-    public static int sumPairs(List<Integer> numbers, long k) {
-        HashMap<Long, Boolean> hashMap = new HashMap();
-        int count = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            long complement = k - numbers.get(i);
-            if (hashMap.containsKey(complement)) {
-                System.out.println(numbers.get(i) + "," + complement);
-                count++;
-            } else {
-                hashMap.put(numbers.get(i).longValue(), true);
-            }
-        }
-        return count;
+    public static void main(String[] args) {
+        System.out.println(sumPairs(Arrays.asList(1, 1, 9, 2, 3, 4, 5, 6, 7, 8, 9), 10));
     }
 
-    public static void main(String args[]) {
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 10, 12));
-        long k = 13;
-        System.out.println("The number of pair is: " + sumPairs(numbers, k));
+    public static int sumPairs(List<Integer> a, long k) {
+        HashSet<Long> set = new HashSet();
+        int count = 0;
+
+        long middle = -1;
+        int middleCount = 0;
+        if (k % 2 == 0) {
+            middle = k / 2;
+        }
+
+        HashSet<Long> numSet = new HashSet();
+        for (int i = 0; i < a.size(); i++) {
+            numSet.add(a.get(i).longValue());
+            if (a.get(i).longValue() == middle) {
+                middleCount++;
+            }
+        }
+
+        for (Long integer : numSet) {
+            long complement = k - integer;
+            if (set.contains(complement)) {
+                System.out.println(integer + "," + complement);
+                count++;
+            } else {
+                set.add(integer);
+            }
+        }
+
+        return middleCount > 1 ? count + 1 : count;
+
     }
+
+
 
 }
