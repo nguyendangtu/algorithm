@@ -51,3 +51,445 @@ org.apache.phoenix.jdbc.PhoenixDriver
 d:
 jdbc:phoenix:x01tbslhdpe1a.vsi.uat.dbs.com,x01tbslhdpe2a.vsi.uat.dbs.com,x01tbslhdpe3a.vsi.uat.dbs.com:2181:/hbase:lcrsdev@REG1.DEV1BANK.DBS.COM:dev\lcrsdev.keytab
 org.apache.phoenix.jdbc.PhoenixDriver
+
+
+5. pom
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>lcrs-engine</artifactId>
+	<groupId>com.dbs.lcrs</groupId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<scala.binary.version>2.10</scala.binary.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>4.12</junit.version>
+		<spark.version>1.6.0</spark.version>
+		<scala.tools.version>2.10</scala.tools.version>
+		<scala.version>2.10.6</scala.version>
+		<scala.compat.version>2.10</scala.compat.version>
+		<scoverage.plugin.version>1.3.0</scoverage.plugin.version>
+		<sonar.exclusions>**/*/common/*/*,**/*/dataregion/ReplicateData.java</sonar.exclusions>
+		<sonar.scoverage.reportPath>target/scoverage.xml</sonar.scoverage.reportPath>
+		<scope.provided>compile</scope.provided>
+	</properties>
+    <repositories>
+        <repository>
+            <id>dbs</id>
+            <!--<name>DBS Artifactory-dev</name>
+            <url>http://artifactory.dev.sys.cs.sgp.dbs.com/artifactory/libs-dev/</url> -->
+			<name>REPO-D</name>
+			<url>https://nexuscimgmt.sgp.dbs.com:8443/nexus/repository/dbsrepo</url>
+        </repository>
+		<repository>
+			<id>lcrs</id>
+			<name>REPO-B</name>
+			<url>https://nexuscimgmt.sgp.dbs.com:8443/nexus/repository/LCRS</url>
+		</repository>
+    </repositories>
+
+	<dependencies>
+
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.15</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>${scala.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-compiler</artifactId>
+			<version>${scala.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scalactic</groupId>
+			<artifactId>scalactic_${scala.compat.version}</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scalatest</groupId>
+			<artifactId>scalatest_2.10</artifactId>
+			<version>3.0.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.scalamock</groupId>
+			<artifactId>scalamock_2.10</artifactId>
+			<version>4.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.holdenkarau</groupId>
+			<artifactId>spark-testing-base_${scala.compat.version}</artifactId>
+			<version>${spark.version}_0.8.0</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>jdk.tools</groupId>
+					<artifactId>jdk.tools</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.dbs.lcrs</groupId>
+			<artifactId>lcrs-engine-cashflow</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_${scala.compat.version}</artifactId>
+			<version>1.6.0-cdh5.7.1</version>
+			<scope>${scope.provided}</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.xerial.snappy</groupId>
+					<artifactId>snappy-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.xerial.snappy</groupId>
+			<artifactId>snappy-java</artifactId>
+			<version>1.1.7.2</version>
+			<type>jar</type>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql_2.10 -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-sql_${scala.compat.version}</artifactId>
+			<version>1.6.0-cdh5.7.1</version>
+			<scope>${scope.provided}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming_2.10</artifactId>
+			<version>1.6.0-cdh5.7.1</version>
+			<scope>${scope.provided}</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-hive_2.10 -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-hive_${scala.compat.version}</artifactId>
+			<version>1.6.0-cdh5.7.1</version>
+			<scope>${scope.provided}</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-spark -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-catalyst_${scala.compat.version}</artifactId>
+			<version>1.6.0-cdh5.7.1</version>
+			<scope>${scope.provided}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-spark</artifactId>
+			<version>1.2.0-cdh5.7.1</version>
+			<scope>${scope.provided}</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.databricks/spark-csv_2.10 -->
+		<dependency>
+			<groupId>com.databricks</groupId>
+			<artifactId>spark-csv_${scala.compat.version}</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.phoenix</groupId>
+			<artifactId>phoenix</artifactId>
+			<version>4.7.2-cdh5.11.1-client</version>
+			<scope>${scope.provided}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-common</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-exec</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json4s</groupId>
+			<artifactId>json4s-jackson_2.12</artifactId>
+			<version>3.6.0-M4</version>
+		</dependency>-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-network-shuffle_${scala.compat.version}</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-network-common_${scala.compat.version}</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-launcher_${scala.compat.version}</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.10</artifactId>
+            <version>2.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-remote_2.10</artifactId>
+            <version>2.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-slf4j_2.10</artifactId>
+            <version>2.3.10</version>
+        </dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.17.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>parquet-hadoop</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>parquet-column</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-core -->
+		<!-- <dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-core</artifactId>
+			<version>5.1.9</version>
+		</dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-api-jdo -->
+		<!-- <dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-api-jdo</artifactId>
+			<version>5.1.9</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-rdbms -->
+		<!-- <dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-rdbms</artifactId>
+			<version>5.1.9</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+
+		<!--<dependency> <groupId>org.apache.phoenix</groupId> <artifactId>phoenix</artifactId> 
+			<version>4.7.0-clabs-phoenix1.3.0-client</version> <scope>${scope.provided}</scope> 
+			</dependency> -->
+	</dependencies>
+	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<finalName>lcrs-engine</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>3.3.1</version>
+				<configuration>
+					<recompileMode>incremental</recompileMode>
+					<useZincServer>true</useZincServer>
+					<javacArgs>
+						<javacArg>-Xlint:unchecked</javacArg>
+						<javacArg>-Xlint:deprecation</javacArg>
+						<javacArg>-J-Xms1064m</javacArg>
+					</javacArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>scala-compile-first</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<!--
+					<execution>
+						<id>scala-test-compile</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+					-->
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.datanucleus</groupId>
+				<artifactId>datanucleus-api-jdo</artifactId>
+				<version>5.1.9</version>
+			</plugin>
+			<plugin>
+				<groupId>org.datanucleus</groupId>
+				<artifactId>datanucleus-rdbms</artifactId>
+				<version>5.1.9</version>
+			</plugin>
+			<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+			<plugin>
+				<groupId>com.zaxxer</groupId>
+				<artifactId>HikariCP</artifactId>
+				<version>3.2.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.phoenix</groupId>
+				<artifactId>phoenix</artifactId>
+				<version>4.7.2-cdh5.11.1-client</version>
+			</plugin>
+			<plugin>
+				<groupId>com.holdenkarau</groupId>
+				<artifactId>spark-testing-base_${scala.compat.version}</artifactId>
+				<version>${spark.version}_0.8.0</version>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+				<version>3.7.0</version> <executions> <execution> <phase>compile</phase> 
+				<goals> <goal>compile</goal> </goals> </execution> </executions> </plugin> -->
+			<plugin>
+				<groupId>org.scoverage</groupId>
+				<artifactId>scoverage-maven-plugin</artifactId>
+				<version>${scoverage.plugin.version}</version>
+				<configuration>
+					<scalaVersion>${scala.version}</scalaVersion>
+					<highlighting>true</highlighting>
+					<excludedPackages>com.dbs.lcrs.common.*;com.dbs.lcrs.common.io.*;com.dbs.lcrs.dataaccess.*;com.dbs.lcrs.datagenration.*;com.dbs.lcrs.datagmigration.util.*;com.dbs.lcrs.udf.*;com.dbs.lcrs.logger.*;com.dbs.lcrs.main.Generate_DDL;com.dbs.lcrs.aggregation.*;com.dbs.lcrs.lr.schema.*;com.dbs.lcrs.lr.bismapping.*;com.dbs.lcrs.lr.lineitemstamping.*;com.dbs.lcrs.lr.reportaggregation.*;com.dbs.lcrs.lr.coafilter.*;com.dbs.lcrs.main.TestMain;com.dbs.lcrs.main.MainWorkFlowRun;com.dbs.lcrs.mapreduce.MapReduceCaller</excludedPackages>
+					<excludedFiles>sql</excludedFiles>
+					<minimumCoverage>20</minimumCoverage>
+					<failOnMinimumCoverage>true</failOnMinimumCoverage>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>report</goal> <!-- or integration-check -->
+						</goals>
+						<phase>prepare-package</phase> <!-- or any other phase -->
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.2</version>
+				<executions>
+					<execution>
+						<id>get-the-git-infos</id>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											net.alchim31.maven
+										</groupId>
+										<artifactId>
+											scala-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.3.1,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+											<goal>compile</goal>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+
+</project>
