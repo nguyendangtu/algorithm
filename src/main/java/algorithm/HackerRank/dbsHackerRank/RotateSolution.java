@@ -1,4 +1,4 @@
-package algorithm.dbsHackerRank;
+package algorithm.HackerRank.dbsHackerRank;
 
 public class RotateSolution {
     public static void main(String args[]) {

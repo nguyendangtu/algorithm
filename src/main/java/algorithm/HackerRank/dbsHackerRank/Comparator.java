@@ -1,4 +1,4 @@
-package algorithm.dbsHackerRank;
+package algorithm.HackerRank.dbsHackerRank;
 
 
 public class Comparator {
