@@ -1,4 +1,4 @@
-package algorithm.HackerRank.dbsHackerRank;
+package algorithm.HackerRank;
 
 import java.util.*;
 
