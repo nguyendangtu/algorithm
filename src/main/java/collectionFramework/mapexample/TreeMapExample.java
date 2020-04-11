@@ -17,6 +17,7 @@ public class TreeMapExample {
         treeMap.put(1, "one");
         treeMap.put(3, "Three");
         treeMap.put(2, "two");
+        treeMap.put(2, "twoo");
         treeMap.put(100, "One hundred");
         treeMap.put(50, "Fifty");
         treeMap.forEach((k, v) -> System.out.println("key=" + k + ",value=" + v));

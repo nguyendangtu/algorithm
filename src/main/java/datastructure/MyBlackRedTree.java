@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MyBlackRedTree {
 
-     private final int RED = 0;
+    private final int RED = 0;
     private final int BLACK = 1;
 
     private class Node {
@@ -350,8 +350,8 @@ public class MyBlackRedTree {
             }
         }
     }
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         MyBlackRedTree rbt = new MyBlackRedTree();
         rbt.consoleUI();
     }

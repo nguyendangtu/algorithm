@@ -11,6 +11,12 @@
         <springboot.version>2.0.1.RELEASE</springboot.version>
         <junit.version>4.12</junit.version>
         <springfox.version>2.4.0</springfox.version>
+        <lombok.version>1.16.12</lombok.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <tradukisto.version>1.0.1</tradukisto.version>
+        <io.jenetics.version>3.7.0</io.jenetics.version>
+        <org.jgrapht.core.version>1.0.1</org.jgrapht.core.version>
+        <org.assertj.core.version>3.9.0</org.assertj.core.version>
     </properties>
     <dependencies>
         <!-- SPRING BOOT -->
@@ -76,6 +82,28 @@
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenetics</groupId>
+            <artifactId>jenetics</artifactId>
+            <version>${io.jenetics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>${org.jgrapht.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.allegro.finance</groupId>
+            <artifactId>tradukisto</artifactId>
+            <version>${tradukisto.version}</version>
         </dependency>
 
 

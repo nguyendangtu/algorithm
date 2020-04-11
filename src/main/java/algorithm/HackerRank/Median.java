@@ -3,8 +3,8 @@ package algorithm.HackerRank;
 public class Median {
     public static void main(String args[]) {
         Median median = new Median();
-        int[] nums1 = new int[]{3};
-        int[] nums2 = new int[]{-1, -2};
+        int[] nums1 = new int[]{1};
+        int[] nums2 = new int[]{7,9};
         System.out.println(median.findMedianSortedArrays(nums1, nums2));
     }
 
@@ -40,3 +40,4 @@ public class Median {
         return sum;
     }
 }
+

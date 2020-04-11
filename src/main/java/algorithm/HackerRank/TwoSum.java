@@ -1,9 +1,6 @@
 package algorithm.HackerRank;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class TwoSum {
     public static void main(String args[]) {
@@ -14,18 +11,17 @@ public class TwoSum {
     }
 
     public static int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        Set<Integer> result = new HashSet<>();
-        Set<Integer> set = new HashSet<>();
+        List<Integer> list = new ArrayList<Integer>();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
-            if (hashMap.get(nums[i]) != null && !set.contains(nums[i])) {
-                result.add(i);
-                result.add(hashMap.get(nums[i]));
-                set.add(nums[i]);
+            if (map.get(nums[i]) != null) {
+                list.add(map.get(nums[i]));
+                list.add(i);
+                map.remove(nums[i]);
             } else {
-                hashMap.put(target - nums[i], i);
+                map.put(target - nums[i], i);
             }
         }
-        return result.stream().mapToInt(Number::intValue).toArray();
+        return list.stream().mapToInt(i -> i).toArray();
     }
 }

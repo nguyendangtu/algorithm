@@ -1,6 +1,7 @@
 package collectionFramework.mapexample;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ public class MapExample {
     public static void main(String args[]) {
         letDoLinkedHashMap();
         letDoHashMap();
+        letDoHashTable();
     }
 
     public static void letDoLinkedHashMap() {
@@ -41,5 +43,27 @@ public class MapExample {
         for (Map.Entry entry : hashMap.entrySet()) {
             System.out.println("key=" + entry.getKey() + ",value=" + entry.getValue());
         }
+
+        System.out.println("HASHMAP");
+        HashMap hashMap1 = new HashMap();
+        hashMap1.put("1", null);
+        hashMap1.put("1", "1");
+        hashMap1.put("1", "2");
+        hashMap1.put("3", "3");
+        hashMap1.put("4", "4");
+        hashMap1.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
+
+
+    }
+
+    public static void letDoHashTable() {
+        System.out.println("HASH TABLE");
+        Hashtable hashtable = new Hashtable();
+        // hashtable.put(null, null);
+        hashtable.put("1", "1");
+        hashtable.put("1", "2");
+        hashtable.put("3", "3");
+        hashtable.put("4", "4");
+        hashtable.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
     }
 }

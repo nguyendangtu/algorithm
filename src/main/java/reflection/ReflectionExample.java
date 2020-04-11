@@ -10,7 +10,7 @@ public class ReflectionExample {
     private String value;
 
     public void doA() {
-        System.out.println("doA");
+        System.out.println("doAaaa");
     }
 
     public void doB() {
@@ -18,9 +18,13 @@ public class ReflectionExample {
     }
 
     public void showDeclareMethods() {
+        ReflectionExample reflectionExample = new ReflectionExample();
         Method[] methods = ReflectionExample.class.getDeclaredMethods();
-        Arrays.stream(methods).forEach(method -> System.out.println(method.getName()));
+        Arrays.stream(methods).forEach(method -> {
+           // method.invoke(reflectionExample,null);
+        });
     }
+
 
     public void showDeclareFields() {
         Field[] fields = ReflectionExample.class.getDeclaredFields();

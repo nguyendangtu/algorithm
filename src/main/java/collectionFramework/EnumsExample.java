@@ -1,6 +1,5 @@
 package collectionFramework;
 
-import javax.swing.text.LabelView;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.function.BiConsumer;
@@ -21,6 +20,7 @@ public class EnumsExample {
         levelName.put(LEVEL.LEVEL2, "Sophomore");
         levelName.put(LEVEL.LEVEL3, "Junior");
         levelName.put(LEVEL.LEVEL4, "Senior");
+        System.out.println(levelName.get(LEVEL.LEVEL4));
         BiConsumer biConsumer = (k, v) -> System.out.println("key=" + k + ", value=" + v);
         levelName.forEach(biConsumer);
     }

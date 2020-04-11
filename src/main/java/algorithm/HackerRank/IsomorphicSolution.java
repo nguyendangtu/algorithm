@@ -12,7 +12,7 @@ public class IsomorphicSolution {
 
     public static void main(String[] args) {
         String s1 = "ab";
-        String s2 = "aa";
+        String s2 = "cd";
         System.out.println("Isomorphic is " + isIsomorphic(s1, s2));
     }
 

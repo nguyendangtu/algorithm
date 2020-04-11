@@ -5,6 +5,10 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiConsumer;
 
+/***
+ * Concurrenthashmap allow concurrent read value from hashmap. For Adding, they will lock before add value to the tree and unlock after added value to the
+ * the tree. The number of thread on concurrent hash map is the number of professors available.
+ */
 public class ConcurrentHashMapExample {
     public static void main(String args[]) {
         int n = 10000;
@@ -20,6 +24,7 @@ public class ConcurrentHashMapExample {
         concurrentHashMap.put("4", "1");
         concurrentHashMap.put("5", "1");
         concurrentHashMap.put("6", "1");
+        concurrentHashMap.get("6");
         System.out.println("Before Iterator " + concurrentHashMap);
         BiConsumer<String, String> biConsumer = (k, v) -> System.out.println("key=" + k + ",value=" + v);
         concurrentHashMap.forEach(biConsumer);

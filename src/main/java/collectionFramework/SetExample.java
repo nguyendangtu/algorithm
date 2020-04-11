@@ -11,23 +11,7 @@ public class SetExample {
 
 
     public static void setInterface() {
-        System.out.println("HASHMAP");
-        HashMap hashMap = new HashMap();
-        hashMap.put("1", null);
-        hashMap.put("1", "1");
-        hashMap.put("1", "2");
-        hashMap.put("3", "3");
-        hashMap.put("4", "4");
-        hashMap.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
 
-        System.out.println("HASH TABLE");
-        Hashtable hashtable = new Hashtable();
-        // hashtable.put(null, null);
-        hashtable.put("1", "1");
-        hashtable.put("1", "2");
-        hashtable.put("3", "3");
-        hashtable.put("4", "4");
-        hashtable.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
 
         System.out.println("HASHSET");
         HashSet hashSet = new HashSet();
