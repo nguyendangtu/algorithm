@@ -1,9 +1,6 @@
 package collectionFramework.mapexample;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MapExample {
     public static void main(String args[]) {
@@ -65,5 +62,6 @@ public class MapExample {
         hashtable.put("3", "3");
         hashtable.put("4", "4");
         hashtable.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
+
     }
 }

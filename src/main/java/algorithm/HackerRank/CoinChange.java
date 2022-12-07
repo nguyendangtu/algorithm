@@ -19,9 +19,11 @@ package algorithm.HackerRank;
  */
 public class CoinChange {
     public static void main(String args[]) {
-        int[] coins = new int[]{1, 2, 4};
-        System.out.println("number of coin is " + doCoinChange(coins, 7));
+        int[] coins = new int[]{1, 2,3,4,5};
+        System.out.println("number of coin is " + doCoinChange(coins, 8));
     }
+
+
 
     public static int doCoinChange(int[] coins, int amount) {
         if (amount == 0) return 0;

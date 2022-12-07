@@ -26,6 +26,7 @@ public class ConvertRomanToInteger {
                 i++;
             }
         }
+
         return count;
     }
 

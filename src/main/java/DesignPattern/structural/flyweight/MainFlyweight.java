@@ -2,6 +2,9 @@ package DesignPattern.structural.flyweight;
 
 import java.util.Random;
 
+/***
+ * minimizes memory usage by sharing some of its data with other similar objects.
+ */
 public class MainFlyweight {
     private static final String[] colors = {"Red", "Green", "Blue", "Black", "White"};
 

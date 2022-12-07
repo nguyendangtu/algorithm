@@ -1,5 +1,10 @@
 package DesignPattern.behavioral.memento;
 
+/***
+ * The memento pattern is a software design pattern that exposes the private internal state of an object.
+ * One example of how this can be used is to restore an object to its previous state (undo via rollback),
+ * another is versioning, another is custom serialization.
+ */
 public class MementoMain {
     public static void main(String args[]) {
         Originator originator = new Originator();

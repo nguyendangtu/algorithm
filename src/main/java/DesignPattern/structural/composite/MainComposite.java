@@ -1,5 +1,8 @@
 package DesignPattern.structural.composite;
 
+/***
+ * The composite pattern describes a group of objects that are treated the same way as a single instance of the same type of object.
+ */
 public class MainComposite {
     public static void main(String args[]) {
         Employee CEO = new Employee("1", "John");

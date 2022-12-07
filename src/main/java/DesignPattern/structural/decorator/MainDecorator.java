@@ -1,6 +1,8 @@
 package DesignPattern.structural.decorator;
 
-
+/***
+ * the decorator pattern is a design pattern that allows behavior to be added to an individual object
+ */
 public class MainDecorator {
     public static void main(String args[]) {
         Circle circle = new Circle();
