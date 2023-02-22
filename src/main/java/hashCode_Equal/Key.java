@@ -7,7 +7,7 @@ import java.util.HashMap;
  *     as class following objects. 1. hash (int), 2. Key (K), 3. Value (V), 4. Node next.
  * II. When we put a value to a hash map, hashCode function will get the hash code value of object and put the object to a node.
  *      all item the same hash will store on a linked set. In case of Collision, we will put the object the same hash code on the same set.
- *      If value the same, the object will be override, If value is difference, hash map will add the new object after existing object into the set.
+ *      If value the same, the object will be overridden, If value is difference, hash map will add the new object after existing object into the set.
  *     When we get a value from a hash map, HashMap will find the linked set base on the hash code of the key, they will compare with the first object
  *       in the set, if not equal, we will compare to the next item and continue util HashMap find out an object into the linked set.
  * III. If we override hashcode, we can find the value when we create a new instance with the same input on constructor.
