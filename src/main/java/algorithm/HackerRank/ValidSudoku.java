@@ -1,7 +1,5 @@
 package algorithm.HackerRank;
 
-import java.util.HashMap;
-
 public class ValidSudoku {
 
     public static void main(String[] args) {
@@ -18,7 +16,17 @@ public class ValidSudoku {
         System.out.println(isValidSudoku(board));
     }
 
-    public static boolean isValidSudoku(char[][] board) {
+    public static boolean isValidSudoku(char [][] board){
+        return true;
+    }
+
+
+
+   /* public static boolean isValid(char [] board, char value){
+
+    }*/
+
+   /* public static boolean isValidSudoku(char[][] board) {
 
         for (int i = 0; i < 9; i++) {
             char[] rowDigits = new char[9];
@@ -49,5 +57,5 @@ public class ValidSudoku {
             }
         }
         return false;
-    }
+    }*/
 }

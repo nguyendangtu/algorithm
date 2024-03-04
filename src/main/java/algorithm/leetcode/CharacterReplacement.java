@@ -6,7 +6,7 @@ package algorithm.leetcode;
  **/
 public class CharacterReplacement {
     public static void main(String[] args) {
-
+        String a = "";
     }
 
     public static int characterReplacement(String s, int k) {

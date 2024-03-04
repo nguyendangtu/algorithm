@@ -1,6 +1,7 @@
 package algorithm.HackerRank;
 
 import java.util.Arrays;
+import java.util.Hashtable;
 
 /***
  * This class will demo dynamic programming via Fibonacci
@@ -15,11 +16,14 @@ public class DemoDynamicProgrammingWithFibonacci {
         System.out.println(recursiveFib(n));
 
         int[] memo = new int[n + 1];
+    //    Arrays.stream(memo).forEach(System.out::println);
         System.out.println(memoizedFib(n, memo));
         System.out.println(bottomUpFib(n));
+        Hashtable a = new Hashtable<>();
     }
 
     public static int recursiveFib(int n) {
+        if (n == 0) return 0;
         if (n == 1 || n == 2) {
             return 1;
         }
@@ -32,6 +36,7 @@ public class DemoDynamicProgrammingWithFibonacci {
         }
 
         int result;
+        if (n == 0) return 0;
         if (n == 1 || n == 2) {
             result = 1;
         } else {
@@ -44,6 +49,7 @@ public class DemoDynamicProgrammingWithFibonacci {
     }
 
     public static int bottomUpFib(int n) {
+        if (n == 0) return 0;
         if (n == 1 || n == 2) {
             return 1;
         }

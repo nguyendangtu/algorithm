@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
  */
 public class MergeSort {
     private static int count = 0;
+
     public static void main(String args[]) {
 //        int[] array = new int[]{38, 27, 43, 3, 9, 82, 10};
-       // int[] array = new int[]{1, 4, 3, 2, 5};
-         int[] array = new int[]{7, 8, 9, 1,2, 3};
+        // int[] array = new int[]{1, 4, 3, 2, 5};
+        int[] array = new int[]{7, 8, 9, 1, 2, 3};
         System.out.println("input:" + Arrays.stream(array).mapToObj(i -> String.valueOf(i)).collect(Collectors.joining(",")));
         mergeSort(array, 0, array.length - 1);
         System.out.println("output:" + Arrays.stream(array).mapToObj(i -> String.valueOf(i)).collect(Collectors.joining(",")));
@@ -42,8 +43,8 @@ public class MergeSort {
                 mergeArray[mergeArrayIndex++] = array[leftSide++];
             } else {
                 mergeArray[mergeArrayIndex++] = array[rightSide++];
-                count = count + (middle-leftSide+1);
-                System.out.println("count="+count);
+                count = count + (middle - leftSide + 1);
+                System.out.println("count=" + count);
             }
         }
 
@@ -51,6 +52,7 @@ public class MergeSort {
             array[start++] = mergeArray[i];
 
         }
-        //System.out.println("input-" + ":" + Arrays.stream(array).mapToObj(String::valueOf).collect(Collectors.joining(",")));
     }
+
+    //System.out.println("input-" + ":" + Arrays.stream(array).mapToObj(String::valueOf).collect(Collectors.joining(",")));
 }
