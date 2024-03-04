@@ -1,6 +1,7 @@
 package DesignPattern.structural.proxy;
 
 public class ProxyImage implements Image {
+
     private RealImage realImage;
     private String fileName;
 
@@ -14,5 +15,11 @@ public class ProxyImage implements Image {
             realImage = new RealImage(fileName);
         }
         realImage.display();
+
+    }
+
+    public static void main(String[] args) {
+
     }
 }
+

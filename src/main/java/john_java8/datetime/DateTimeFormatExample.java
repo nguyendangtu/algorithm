@@ -32,7 +32,7 @@ public class DateTimeFormatExample {
         LocalDate parsedDate = LocalDate.parse(text, formatter);
         System.out.println("parsedDate=" + parsedDate.toString());
         //Date instance
-        Date date = new Date("2015, 12, 25, 20, 40");
+        Date date = DateTime.now().toDate();
         System.out.println("before java 8 date:" + date.toString());
 
     }

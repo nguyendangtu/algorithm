@@ -15,6 +15,25 @@ public class areAnagrams {
         System.out.println(areAnagrams(new char[]{'b', 'i', 'g'}, new char[]{'b', 'i', 'g'}));
     }
 
+    public boolean isAnagram(String s, String t) {
+        if(s == null && s== null) return true;
+        if(s == null || t== null) return false;
+        if(s.length() != t.length()) return false;
+
+        int[] freq = new int[26];
+        for(int i=0;i<s.length();i++){
+            freq[s.charAt(i) - 'a']++;
+            freq[t.charAt(i) - 'a']--;
+        }
+
+        for(int i=0;i<freq.length;i++){
+            if(freq[i] != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     public static int areAnagrams(char a1[], char a2[]) {
         if (a1 == null && a2 == null) return 1;
