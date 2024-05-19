@@ -2,7 +2,7 @@ package DesignPattern.behavioral.observer;
 
 public class BinaryObserver extends Observer {
     public BinaryObserver(Subject subject) {
-        subject.attach(this);
+        subject.addObserver(this);
         this.subject = subject;
     }
 

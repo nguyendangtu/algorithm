@@ -3,7 +3,7 @@ package DesignPattern.behavioral.observer;
 public class HexaObserver extends Observer {
 
     public HexaObserver(Subject subject) {
-        subject.attach(this);
+        subject.addObserver(this);
         this.subject = subject;
     }
 

@@ -3,7 +3,7 @@ package DesignPattern.behavioral.observer;
 public class OctalObserver extends Observer {
 
     public OctalObserver(Subject subject) {
-        subject.attach(this);
+        subject.addObserver(this);
         this.subject = subject;
     }
 
