@@ -1,0 +1,308 @@
+I. Patterns:
+	What problem does this pattern solve?
+	Advantages and disadvantages
+	What are the issues when you apply this pattern?
+	What are the different ways you can apply the pattern?
+	1. Command: 
+	  Encapsulate a request in an object
+	  Allows the parameterization of clients with different requests
+	  Allows saving the requests in a queue
+		a. Solving Problems:
+			Decoupling the sender and receiver
+			Parameterizing objects with operations
+			Queuing and executing requests
+			Supporting undo/redo functionality
+		b. Advantages/Disadvantages
+			Advantages: Loose Coupling, Flexibility, Undo/Redo, Extensibility
+			Disadvantages: Increased Number of Classes, Complexity
+		c. Issues When Applying the Command Pattern: 
+		   Command Management, Command Storage, Security
+		d. Different Ways to Apply the Command Pattern:
+		  Standard Command Pattern
+		  Lambda Functions or Method References (Java 8+)
+		  Composite Commands
+		  Memento Pattern Integration
+		  Command Queues and Logs
+	2. Chain of responsibility
+	   Consisting serial of objects. Each object handle their biz, the rest are passes to next object into the chain.
+	   a. Solving Problems:
+			Decoupling Senders and Receivers
+			Dynamic Handling
+			Simplified Object Design
+	   b. Advantages/Disadvantages:
+			Advantages: Decoupling of Request Senders and Handlers, Flexibility in Assigning Responsibilities, Separation of Concerns, Promotes Reusability
+			Disadvantages: Uncertain Handling, Complex Configuration, Performance Overhead
+		c. Issues When Applying the Pattern: Handler Order, Unprocessed Requests, Testing and Debugging
+		d. Different Ways to Apply the Command Pattern:
+			Static Chain
+			Dynamic Chain
+			Configuration-based Chain
+			Middleware in Web Frameworks
+			
+	  
+	3. Composite
+	Describes a group of objects that are treated the same way as a single instance of the same type of object.
+		a. Problem Solved by the Composite Pattern:
+			Uniformity
+			Hierarchy Representation
+			Simplification of Client Code
+		b. Advantages/Disadvantages
+			Advantages: Uniformity, Extensibility, Simplified Client Code
+			Disadvantages: Overhead, Type Safety, Performance 
+		c. Issues When Applying the Composite Pattern
+			Complexity
+			Memory Consumption
+			Iteration and Navigation
+		d. Different Ways to Apply the Pattern:
+			Transparent Composite
+			Safe Composite
+		
+	
+	4. Observer ( It is also known as the Publish-Subscribe pattern)
+	maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
+		a. Problem Solved by the Observer Pattern:
+			Decoupling
+			Dynamic Subscription
+			Automatic Updates
+		b. Advantages/Disadvantages:
+			Advantages: Loose Coupling, Dynamic Relationships, Consistent State, Reusability
+			Disadvantages: Memory Leaks, Unexpected Updates, Complexity
+		c. Issues When Applying the Observer Pattern:
+			Notification Overhead
+			Observer Management
+			Update Synchronization
+		d. Different Ways to Apply the Pattern
+			Push Model
+			Pull Model
+			Hybrid Model
+	5. State
+	  Alter its behavior when its internal state changes.
+	  Encapsulates state-specific behavior in separate state objects and delegates to the current state object.
+		a. Problem Solved by the State Pattern:
+			State-specific Behavior
+			State Transitions
+			Code Complexity
+		b. Advantages/Disadvantages
+			Advantages: Simplified Code Maintenance, Open/Closed Principle, State Transition Management
+			Disadvantages: State Transition Management, Overhead, Complexity in Simple Scenarios
+		c. Issues When Applying the State Pattern:
+			Object Identity
+			State Explosion
+			Transition Logic
+		d. Different Ways to Apply the Pattern
+			Classic Implementation
+			Dynamic State Management
+			State Machine Framework
+			
+	6. Strategy
+	  Enables selecting an algorithm at runtime
+		a. Problem Solved by the Strategy Pattern
+			Algorithm Variability
+			Code Duplication
+			Flexibility
+		b. Advantages/Disadvantages
+			Advantages: Open/Closed Principle, Reusability, Encapsulation, Flexibility
+			Disadvantages: Increased Number of Classes, Complexity, Overhead
+		c. Issues When Applying the Strategy Pattern
+			Choosing the Right Strategy
+			State Management
+			Context Awareness
+			Configuration-based Strategy Selection
+		d. Different Ways to Apply the Pattern
+			Static Strategy Selection
+			Dynamic Strategy Selection
+			
+	7. Façade (Service)
+		Provides a simplified interface to a complex subsystem.
+		The Facade defines a higher-level interface that makes the subsystem easier to use by encapsulating the complexity and providing a unified, easy-to-use interface
+		a. Problem Solved by the Facade Pattern
+			Complexity Management
+			Ease of Use
+			Decoupling
+		b. Advantages/Disadvantages:
+			Advantages: Simplified Interface, Loose Coupling, Improved Maintenance, Flexibility
+			Disadvantages: Limited Functionality, Overhead
+		c. Issues When Applying the Facade Pattern:
+			Balancing Simplicity and Functionality
+			Subsystem Changes
+		d. Different Ways to Apply the Pattern
+			Single Facade
+			Multiple Facades
+			Layered Facade
+	
+	8. Template method
+		Defines the skeleton of an algorithm in a base class but lets subclasses override specific steps of the algorithm without changing its structure.
+		a. Problem Solved by the Template Method Pattern
+			Code Duplication
+			Algorithm Structure
+			Reuse and Flexibility
+		b. Advantages/Disadvantages:
+			Advantages: Code Reuse, Consistency, Flexibility
+			Disadvantages: Inheritance Dependency, Limited by Base Class, Maintenance
+		c. Issues When Applying the Template Method Pattern
+			Inheritance Overuse
+			Fragile Base Class
+			Liskov Substitution Principle
+		d. Different Ways to Apply the Pattern
+			Abstract Base Class
+			Hook Methods
+			Concrete Base Class
+			
+	9. Proxy and dynamic proxy pattern
+		Provides a surrogate or placeholder for another object to control access to it
+		a. Problem Solved by the Proxy Pattern
+			Access Control
+			Lazy Initialization
+			Logging and Monitoring
+			Remote Proxy
+		b. Advantages/Disadvantages:
+			Advantages: Controlled Access, Performance Optimization, Separation of Concerns, Enhanced Functionality
+			Disadvantages: Overhead, Increased Complexity, Potential Bottlenecks
+		c. Issues When Applying the Proxy Pattern
+			Transparent Proxy
+			Consistency
+			Performance
+		d. Different Ways to Apply the Pattern
+			Virtual Proxy
+			Protection Proxy
+			Remote Proxy
+			Smart Proxy
+		
+	10. Adapter pattern
+		Translates the existing interface of a class into an interface that the client requires
+		a. Problem Solved by the Adapter Pattern
+			Interface Incompatibility
+			Legacy Code Integration
+			Reusability
+		b. Advantages/Disadvantages
+			Advantages: Increased Reusability, Flexibility, Simplified Integration
+			Disadvantages: Additional Layer, Performance Overhead, Maintenance
+		c. Issues when you apply this pattern
+			Adapter Design
+			Maintenance
+			Choosing the Right Adapter
+		d. Different Ways to Apply the Pattern
+			Class Adapter
+			Object Adapter
+			Interface Adapter
+			Two-Way Adapte
+			
+	11. Decorator pattern
+		Add behavior to an individual object
+		a. Problem Solved by the Adapter Pattern
+			Dynamic Extension
+			Open/Closed Principle
+			Single Responsibility Principle
+		b. Advantages/Disadvantages
+			Advantages: Flexibility, Modularity, Reusability, Maintainability
+			Disadvantages: Complexity, Ordering Dependency, Performance Overhead
+		c. Issues when you apply this pattern
+			Ordering
+			Composition vs. Inheritance
+			Debugging
+		d. Different Ways to Apply the Pattern
+			Class-Based Decorators
+			Function-Based Decorators
+			Method Chaining
+			Parameterized Decorators
+			Multiple Decorators
+		
+	12. Singleton pattern
+		 Ensures a class has only one instance and provides a global point of access to that instance
+		a. What problem does this pattern solve?
+			Controlled Access to Resources
+			Global Access
+		b. Advantages and disadvantages
+			Advantages: Single Instance, Global Access, Lazy Initialization, Thread Safety
+			Disadvantages: Global State, Global State, Testing, Tight Coupling, Concurrency Issues
+		c. What are the issues when you apply this pattern?
+			Initialization
+			Resource Management
+			Subclassing
+		d. What are the different ways you can apply the pattern?
+			Subclassing
+			Lazy Initialization
+			Thread-Safe Singleton
+			Enum Singleton
+			Dependency Injection
+	
+	13. Factory pattern
+	  provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created
+		a. What problem does this pattern solve?
+			Creating Objects Dynamically
+			Encapsulation
+		b. Advantages and disadvantages
+			Advantages: Encapsulation, Abstraction, Flexibility, Simplification
+			Disadvantages: Complexity, Increased Number of Classes, Dynamic Behavior
+		c. What are the issues when you apply this pattern?
+			Choosing the Right Factory Type
+			Object Creation Logic
+			Testing
+		d. What are the different ways you can apply the pattern?
+			Simple Factory
+			Factory Method
+			Abstract Factory
+			Static Factory Method
+			
+	14. Mediator pattern (vice versa with Facade pattern).
+		Encapsulates how different objects interact
+		a. What problem does this pattern solve?
+			Complex Communication Logic
+			Centralized Control
+		b. Advantages and disadvantages
+			Advantages: Decoupling, Simplification, Flexibility, Reusability
+			Disadvantages: Complexity, Dependency on Mediator, Increased Coupling
+		c. What are the issues when you apply this pattern?
+			Mediator Design
+			Object Registration
+			Performance Overhead
+		d. What are the different ways you can apply the pattern?
+			Single Mediator
+			Colleague Interfaces
+			Event Driven Mediator
+	15. Builder pattern
+	   Provide a flexible solution to various object creation problems in object-oriented programming.
+		a. What problem does this pattern solve?
+			Complex Object Construction
+			Separation of Concerns
+		b. Advantages and disadvantages
+			Advantages: Flexibility, Encapsulation, Readability, Reusability
+			Disadvantages: Complexity, Increased Number of Classes, Learning Curve
+		c. What are the issues when you apply this pattern?
+			Builder Interface
+			Director Role
+			Variability in Construction
+		d. What are the different ways you can apply the pattern?
+			Fluent Interface
+			Parameterized Builder
+			Step-by-Step Builder
+			Director and Builder
+
+II. Framework implementation
+	IoC: 
+Techniques used: IoC, context, dependency injection, profiles, convention over configuration
+You should understand the code from the slides and labs. You should be able to write this in pseudo
+code. You don’t need to memorize the Java code
+
+Spring framework
+ Dependency Injection
+o What problem does it solve
+o When do you use it, advantages, disadvantages
+o Understand the different types of injection
+o Understand profiles
+o Understand the different way to configure Spring
+o You should be able to implement DI in code with annotations
+o You should be able to understand DI in XML (You don’t need to memorize the XML
+code)
+ Spring boot
+o You should be able to implement a Spring boot application in code
+ AOP
+o What problem does it solve
+o When do you use it, advantages, disadvantages
+o You should be able to understand AOP in code with the pointcut expression
+language. (You don’t need to memorize the pointcut expression language)
+ Events
+o What problem does it solve
+o When do you use it, advantages, disadvantages
+o You should be able to implement events in a Spring boot application (in code)
+
